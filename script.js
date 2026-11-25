@@ -12,7 +12,7 @@ const PORTFOLIO_EVENTS = [
         name: "mdcu-ajarnyai-2570",
         tagline: "ระบบตรวจสอบข้อมูลอาจารย์ใหญ่ ประจำปีการศึกษา 2568 | คณะแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย",
         description:
-          "**Test with Q Number: 676 Password: MDCU**\n\nNext.js + Supabase web application for cadaver memorial & donor consent management, featuring CSV import with PATCH updates, special consent statuses, custom Chulalongkorn typography, mobile-first header/scroll optimizations, and maintenance mode.",
+          "**Test with:\n Q Number: 678 Password: MDCU**\n\nNext.js + Supabase web application for cadaver memorial & donor consent management, featuring CSV import with PATCH updates, special consent statuses, custom Chulalongkorn typography, mobile-first header/scroll optimizations, and maintenance mode.",
         tech: ["Next.js", "Supabase", "Vercel Analytics", "bcryptjs"],
         liveUrl: "https://ajarnyai.docchula.com/",
         githubUrl: "https://github.com/pawinner/mdcu-ajarnyai-2570",
@@ -183,7 +183,7 @@ const PORTFOLIO_EVENTS = [
     siteUrl: "https://pawinner.github.io/mdcu-oph26-escape-timer/countdown",
     projects: [
       {
-        name: "MDCU OPH Timer",
+        name: "mdcu-oph26-escape-timer",
         tagline: "Countdown Timer - MDCU OPH 2026: Escape Room",
         description:
           "Countdown Timer for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-timer).",
@@ -192,7 +192,7 @@ const PORTFOLIO_EVENTS = [
         githubUrl: "https://github.com/pawinner/mdcu-oph26-escape-timer"
       },
       {
-        name: "MDCU OPH Crossword",
+        name: "mdcu-oph26-escape-crossword",
         tagline: "Crossword - MDCU OPH 2026: Escape Room",
         description:
           "Crossword Gameplay for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-crossword).",
@@ -201,7 +201,7 @@ const PORTFOLIO_EVENTS = [
         githubUrl: "https://github.com/pawinner/mdcu-oph26-escape-crossword"
       },
       {
-        name: "MDCU OPH Hint Quiz",
+        name: "mdcu-oph26-escape-hints",
         tagline: "Quiz for Hint - MDCU OPH 2026: Escape Room",
         description:
           "Quizzes for Hints for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-hints).",
@@ -213,8 +213,8 @@ const PORTFOLIO_EVENTS = [
   },
   {
     id: "other",
-    title: "Other GitHub Repositories",
-    description: "Additional public repositories on github.com/pawinner outside the local event folders.",
+    title: "Others",
+    description: "",
     siteUrl: null,
     projects: [
       {
