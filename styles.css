@@ -491,12 +491,46 @@ a:hover { text-decoration: underline; }
 }
 
 /* ═══════════════════════════════════════════════
-   PROJECTS GRID
+   PROJECTS GRID & GROUPS
 ═══════════════════════════════════════════════ */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
+}
+
+.project-group {
+  margin-top: 24px;
+}
+
+.project-group:first-of-type {
+  margin-top: 14px;
+}
+
+.project-group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.project-group-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.project-group-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  padding: 2px 8px;
+  border-radius: 999px;
 }
 
 /* ═══════════════════════════════════════════════

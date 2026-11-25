@@ -6,13 +6,14 @@ const PORTFOLIO_EVENTS = [
     id: "ajarnyai",
     title: "2027 MDCU Ajarnyai",
     description: "Web platform and data tooling for MDCU Ajarnyai 2570.",
-    siteUrl: null,
+    siteUrl: "https://ajarnyai.docchula.com/",
     projects: [
       {
         name: "mdcu-ajarnyai-2570",
         description:
           "Next.js + Supabase web application for cadaver memorial & donor consent management, featuring CSV import with PATCH updates, special consent statuses, custom Chulalongkorn typography, mobile-first header/scroll optimizations, and maintenance mode.",
         tech: ["Next.js", "Supabase", "Vercel Analytics", "bcryptjs"],
+        liveUrl: "https://ajarnyai.docchula.com/",
         githubUrl: "https://github.com/pawinner/mdcu-ajarnyai-2570",
         isPrivate: true,
         notes: "Supporting folders in event: data/ (CSV imports) & Pics from LineOA/."
@@ -39,10 +40,59 @@ const PORTFOLIO_EVENTS = [
     id: "freshy",
     title: "MDCU Freshy Camp 2026",
     description: "Games, timers, check-in systems, dashboards, and interactive web apps for Freshy Camp & Big Game 2026.",
-    siteUrl: "https://biggame26-ending.vercel.app",
+    siteUrl: "https://knowyournong82.vercel.app",
     projects: [
       {
+        name: "MDCU-Night-CheckIn",
+        group: "Registrar & Database",
+        description:
+          "ระบบเช็คชื่อน้อง MDCU Freshy Camp & Night 2026 — collaborative check-in system with PanuwitPuk.",
+        tech: ["HTML/JS", "Google Apps Script"],
+        liveUrl: "https://freshyxnight2026.vercel.app",
+        githubUrl: "https://github.com/PanuwitPuk/MDCU-Night-CheckIn",
+        role: "15 commits: Google Apps Script backend integration, cached search/filter speedup, dorm check-in logic, and bug fixes."
+      },
+      {
+        name: "freshy26-knowyournong82",
+        group: "Registrar & Database",
+        description:
+          '"จดหมายถึงพี่รหัส" — interactive web experience for Freshy 82 students with custom Open Graph metadata and responsive typography.',
+        tech: ["React", "TypeScript", "Vite", "Vercel"],
+        liveUrl: "https://knowyournong82.vercel.app",
+        githubUrl: "https://github.com/pawinner/freshy26-knowyournong82"
+      },
+      {
+        name: "freshy26-pline-checkin",
+        group: "Registrar & Database",
+        description:
+          "P-Line check-in web application with location verification toggle, attendance check link, and responsive check-in flow.",
+        tech: ["Next.js", "React", "Vercel"],
+        liveUrl: "https://freshy26-pline-checkin.vercel.app",
+        githubUrl: "https://github.com/pawinner/freshy26-pline-checkin"
+      },
+      {
+        name: "MDCU-BigGame2026",
+        group: "Big Game",
+        description:
+          "Main Big Game 2026 web application built with LiterallyNotCaT (KirikaA).",
+        tech: ["Next.js", "NextAuth", "Vercel KV", "Framer Motion"],
+        liveUrl: "https://gamehub888.vercel.app",
+        githubUrl: "https://github.com/LiterallyNotCaT/MDCU-BigGame2026",
+        role: "23 commits: game mode settings, timer/form write error handling, favicon & layout metadata updates."
+      },
+      {
+        name: "biggame26-staff-checkin",
+        group: "Big Game",
+        description:
+          "Staff check-in and QR attendance web app for Big Game 2026 with NextAuth and Google Apps Script OAuth integration.",
+        tech: ["Next.js", "NextAuth", "Google Apps Script", "Vercel Analytics"],
+        liveUrl: "https://biggame26-checkin.vercel.app",
+        githubUrl: "https://github.com/pawinner/biggame26-staff-checkin",
+        notes: "Includes local Codex prototype variant (biggame26-staff-checkin-codex xxxx)."
+      },
+      {
         name: "biggame26-ending",
+        group: "Big Game",
         description:
           "Real-time central presentation dashboard, interactive game controllers, wood timer with particle effects, audio-analyzed lottery/slot machine, and ending results display.",
         tech: ["JavaScript", "Firebase", "Vercel Analytics", "Python"],
@@ -51,74 +101,12 @@ const PORTFOLIO_EVENTS = [
       },
       {
         name: "biggame26-countdown",
+        group: "Big Game",
         description:
           "Countdown timer suite for Big Game MDCU Freshy Camp 2026 (Escape, Fair, and Physical game modes with skip-intro & round timing controls).",
         tech: ["HTML/CSS/JS", "GitHub Pages"],
         liveUrl: "https://pawinner.github.io/mdcu-biggame26-countdown/escape",
         githubUrl: "https://github.com/pawinner/mdcu-biggame26-countdown"
-      },
-      {
-        name: "biggame26-staff-checkin",
-        description:
-          "Staff check-in and QR attendance web app for Big Game 2026 with NextAuth and Google Apps Script OAuth integration.",
-        tech: ["Next.js", "NextAuth", "Google Apps Script", "Vercel Analytics"],
-        liveUrl: "https://biggame26-staff-checkin.vercel.app",
-        githubUrl: "https://github.com/pawinner/biggame26-staff-checkin",
-        notes: "Includes local Codex prototype variant (biggame26-staff-checkin-codex xxxx)."
-      },
-      {
-        name: "freshy26-knowyournong82",
-        description:
-          '"จดหมายถึงพี่รหัส" — interactive web experience for Freshy 82 students with custom Open Graph metadata and responsive typography.',
-        tech: ["React", "TypeScript", "Vite", "Vercel"],
-        liveUrl: "https://freshy26-knowyournong82.vercel.app",
-        githubUrl: "https://github.com/pawinner/freshy26-knowyournong82"
-      },
-      {
-        name: "freshy26-pline-checkin",
-        description:
-          "P-Line check-in web application with location verification toggle, attendance check link, and responsive check-in flow.",
-        tech: ["Next.js", "React", "Vercel"],
-        liveUrl: "https://freshy26-pline-checkin.vercel.app",
-        githubUrl: "https://github.com/pawinner/freshy26-pline-checkin"
-      },
-      {
-        name: "mdcu-freshy82-checkin",
-        description:
-          "QR Attendance Checking System for MDCU Freshy Camp 2026 (forked & customized from MDCU-Night-CheckIn with updated GAS backend and audio feedback).",
-        tech: ["HTML/JS", "Google Apps Script", "GitHub Pages"],
-        liveUrl: "https://pawinner.github.io/mdcu-freshy82-checkin/",
-        githubUrl: "https://github.com/pawinner/mdcu-freshy82-checkin"
-      },
-      {
-        name: "MDCU-Night-CheckIn",
-        description:
-          "ระบบเช็คชื่อน้อง MDCU Freshy Camp & Night 2026 — collaborative check-in system with PanuwitPuk.",
-        tech: ["HTML/JS", "Google Apps Script"],
-        githubUrl: "https://github.com/PanuwitPuk/MDCU-Night-CheckIn",
-        role: "15 commits: Google Apps Script backend integration, cached search/filter speedup, dorm check-in logic, and bug fixes."
-      },
-      {
-        name: "MDCU-BigGame2026",
-        description:
-          "Main Big Game 2026 web application built with LiterallyNotCaT (KirikaA).",
-        tech: ["Next.js", "NextAuth", "Vercel KV", "Framer Motion"],
-        githubUrl: "https://github.com/LiterallyNotCaT/MDCU-BigGame2026",
-        role: "23 commits: game mode settings, timer/form write error handling, favicon & layout metadata updates."
-      },
-      {
-        name: "biggame-project",
-        description:
-          "Big Game analytics & monitoring dashboard built with LiterallyNotCaT (KirikaA).",
-        tech: ["Next.js", "Supabase", "ApexCharts", "Framer Motion"],
-        githubUrl: "https://github.com/LiterallyNotCaT/biggame-project",
-        role: "2 commits: font configuration refactor in globals.css/layout.tsx and MorningPage background styling."
-      },
-      {
-        name: "biggame26-scoring",
-        description:
-          "Google Apps Script & HTML scoring tools for morning (upper/lower) and afternoon Big Game sessions.",
-        tech: ["Google Apps Script", "HTML"]
       }
     ]
   },
@@ -272,6 +260,7 @@ function matchesQuery(project, eventTitle, query) {
   const haystack = [
     eventTitle, project.name, project.description,
     project.role || "", project.notes || "",
+    project.group || "",
     ...(project.tech || [])
   ].join(" ").toLowerCase();
   return haystack.includes(q);
@@ -644,11 +633,48 @@ function renderPortfolio() {
 
     section.appendChild(hdr);
 
-    // Grid
-    const grid = document.createElement("div");
-    grid.className = "projects-grid";
-    ev.projects.forEach(p => grid.appendChild(createProjectCard(p, color.grad)));
-    section.appendChild(grid);
+    // Projects Grid (grouped if any project specifies a group, else flat)
+    const hasGroups = ev.projects.some(p => p.group);
+    if (!hasGroups) {
+      const grid = document.createElement("div");
+      grid.className = "projects-grid";
+      ev.projects.forEach(p => grid.appendChild(createProjectCard(p, color.grad)));
+      section.appendChild(grid);
+    } else {
+      const groupMap = new Map();
+      ev.projects.forEach(p => {
+        const gName = p.group || "Other";
+        if (!groupMap.has(gName)) groupMap.set(gName, []);
+        groupMap.get(gName).push(p);
+      });
+
+      groupMap.forEach((gProjects, gName) => {
+        const groupEl = document.createElement("div");
+        groupEl.className = "project-group";
+
+        const groupHdr = document.createElement("div");
+        groupHdr.className = "project-group-header";
+
+        const groupTitle = document.createElement("h3");
+        groupTitle.className = "project-group-title";
+        groupTitle.textContent = gName;
+        groupHdr.appendChild(groupTitle);
+
+        const groupCount = document.createElement("span");
+        groupCount.className = "project-group-count";
+        groupCount.textContent = `${gProjects.length} project${gProjects.length === 1 ? "" : "s"}`;
+        groupHdr.appendChild(groupCount);
+
+        groupEl.appendChild(groupHdr);
+
+        const grid = document.createElement("div");
+        grid.className = "projects-grid";
+        gProjects.forEach(p => grid.appendChild(createProjectCard(p, color.grad)));
+        groupEl.appendChild(grid);
+
+        section.appendChild(groupEl);
+      });
+    }
 
     rootEl.appendChild(section);
   });
