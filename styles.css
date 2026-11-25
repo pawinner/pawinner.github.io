@@ -728,6 +728,7 @@ a:hover { text-decoration: underline; }
   color: var(--muted);
   font-size: 0.875rem;
   line-height: 1.55;
+  white-space: pre-line;
 }
 
 .card-desc-lead {
@@ -877,7 +878,8 @@ a:hover { text-decoration: underline; }
 }
 
 .link-btn.primary {
-  border-color: transparent;
+  border: 0;
+  padding: 8.5px 15.5px;
   color: #fff;
 }
 

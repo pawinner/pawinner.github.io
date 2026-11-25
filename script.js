@@ -5,14 +5,14 @@ const PORTFOLIO_EVENTS = [
   {
     id: "ajarnyai",
     title: "MDCU Ajarnyai 2027",
-    description: "พิธีพระราชทานเพลิงศพอาจารย์ใหญ่ผู้ทอดร่างกายเพื่อการศึกษา (เป็นกรณีพิเศษ) ประจำปีการศึกษา 2568",
+    description: "พิธีพระราชทานเพลิงศพอผู้อุทิศร่างกายเพื่อการศึกษา (เป็นกรณีพิเศษ) ประจำปีการศึกษา 2568",
     siteUrl: "https://ajarnyai.docchula.com/",
     projects: [
       {
         name: "mdcu-ajarnyai-2570",
         tagline: "ระบบตรวจสอบข้อมูลอาจารย์ใหญ่ ประจำปีการศึกษา 2568 | คณะแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย",
         description:
-          "Next.js + Supabase web application for cadaver memorial & donor consent management, featuring CSV import with PATCH updates, special consent statuses, custom Chulalongkorn typography, mobile-first header/scroll optimizations, and maintenance mode.",
+          "**Test with Q Number: 676 Password: MDCU**\n\nNext.js + Supabase web application for cadaver memorial & donor consent management, featuring CSV import with PATCH updates, special consent statuses, custom Chulalongkorn typography, mobile-first header/scroll optimizations, and maintenance mode.",
         tech: ["Next.js", "Supabase", "Vercel Analytics", "bcryptjs"],
         liveUrl: "https://ajarnyai.docchula.com/",
         githubUrl: "https://github.com/pawinner/mdcu-ajarnyai-2570",
@@ -24,12 +24,12 @@ const PORTFOLIO_EVENTS = [
   {
     id: "tournament",
     title: "MDCU 4th Medical Tournament",
-    description: "Part of MDCU Congress 2026",
+    description: "MDCU Congress 2026",
     siteUrl: "https://pawinner.github.io/mdcu-tournament26/",
     projects: [
       {
         name: "mdcu-tournament26",
-        tagline: "MDCU Medical Tournament 2026",
+        tagline: "MDCU 4th Medical Tournament - A Part of MDCU Congress 2026",
         description:
           "Interactive futuristic web app for stage presentation, countdown management, Jeopardy-style competition, and live leaderboard displays for the 4th MDCU Medical Tournament 2026.",
         tech: ["HTML/CSS/JS", "Google Apps Script"],
@@ -41,7 +41,7 @@ const PORTFOLIO_EVENTS = [
   {
     id: "freshy",
     title: "MDCU Freshy Camp 2026",
-    description: "Games, timers, check-in systems, dashboards, and interactive web apps for Freshy Camp & Big Game 2026.",
+    description: "Head of Registrar & Database and IT Core Team of Big Game.",
     siteUrl: "https://knowyournong82.vercel.app",
     projects: [
       {
@@ -61,7 +61,7 @@ const PORTFOLIO_EVENTS = [
         group: "Registrar & Database",
         tagline: "จดหมายถึงพี่รหัส",
         description:
-          '"จดหมายถึงพี่รหัส" — interactive web experience for P\'81 students to check their kinship preferences.',
+          'Interactive web experience for P\'81 students to check their kinship preferences.',
         tech: ["React", "TypeScript", "Vite", "Vercel"],
         liveUrl: "https://knowyournong82.vercel.app",
         githubUrl: "https://github.com/pawinner/freshy26-knowyournong82"
@@ -122,45 +122,11 @@ const PORTFOLIO_EVENTS = [
     ]
   },
   {
-    id: "openhouse",
-    title: "MDCU Open House 2026",
-    description: "Escape Room web applications (Timer, Crossword, and Hint Quizzes).",
-    siteUrl: "https://pawinner.github.io/mdcu-oph26-escape-timer/countdown",
-    projects: [
-      {
-        name: "MDCU OPH Timer",
-        tagline: "Countdown Timer - MDCU OPH 2026: Escape Room",
-        description:
-          "Countdown Timer for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-timer).",
-        tech: ["HTML/CSS/JS", "GitHub Pages"],
-        liveUrl: "https://pawinner.github.io/mdcu-oph26-escape-timer/countdown",
-        githubUrl: "https://github.com/pawinner/mdcu-oph26-escape-timer"
-      },
-      {
-        name: "MDCU OPH Crossword Gemini",
-        tagline: "Crossword - MDCU OPH 2026: Escape Room",
-        description:
-          "Crossword Gameplay for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-crossword). Includes earlier MDCU OPH Crossword GPT prototype.",
-        tech: ["HTML/CSS/JS", "GitHub Pages"],
-        liveUrl: "https://pawinner.github.io/mdcu-oph26-escape-crossword/play",
-        githubUrl: "https://github.com/pawinner/mdcu-oph26-escape-crossword"
-      },
-      {
-        name: "MDCU OPH Hint Quiz",
-        tagline: "Quiz for Hint - MDCU OPH 2026: Escape Room",
-        description:
-          "Quizzes for Hints for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-hints).",
-        tech: ["HTML/CSS/JS", "GitHub Pages"],
-        liveUrl: "https://pawinner.github.io/mdcu-oph26-escape-hints/hint",
-        githubUrl: "https://github.com/pawinner/mdcu-oph26-escape-hints"
-      }
-    ]
-  },
-  {
     id: "itsmcu",
-    title: "IT_SMCU Projects",
-    description: "Student Union of the Faculty of Medicine, Chulalongkorn University (docchula) IT projects & contributions.",
+    title: "IT SMCU Projects",
+    description: "IT Division, Student Union of the Faculty of Medicine, Chulalongkorn University (Docchula) projects & contributions.",
     siteUrl: "https://fake-docchula-player.vercel.app",
+    faviconSource: "https://docchula.com/",
     projects: [
       {
         name: "DataPrivacySMCU",
@@ -168,6 +134,7 @@ const PORTFOLIO_EVENTS = [
         description:
           "SMCU Data Privacy form submission and approval web application (Laravel / PHP).",
         tech: ["Laravel", "PHP", "Bootstrap 5", "Docker"],
+        liveUrl: "https://dataprivacy.docchula.com/",
         githubUrl: "https://github.com/docchula/DataPrivacySMCU",
         organization: "Docchula",
         isPrivate: true,
@@ -206,6 +173,41 @@ const PORTFOLIO_EVENTS = [
         organization: "Docchula",
         isPrivate: true,
         role: "Local reference clone (0 commits by Pawinner in git history)."
+      }
+    ]
+  },
+  {
+    id: "openhouse",
+    title: "MDCU Open House 2026 - Escape Room",
+    description: "",
+    siteUrl: "https://pawinner.github.io/mdcu-oph26-escape-timer/countdown",
+    projects: [
+      {
+        name: "MDCU OPH Timer",
+        tagline: "Countdown Timer - MDCU OPH 2026: Escape Room",
+        description:
+          "Countdown Timer for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-timer).",
+        tech: ["HTML/CSS/JS", "GitHub Pages"],
+        liveUrl: "https://pawinner.github.io/mdcu-oph26-escape-timer/countdown",
+        githubUrl: "https://github.com/pawinner/mdcu-oph26-escape-timer"
+      },
+      {
+        name: "MDCU OPH Crossword",
+        tagline: "Crossword - MDCU OPH 2026: Escape Room",
+        description:
+          "Crossword Gameplay for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-crossword).",
+        tech: ["HTML/CSS/JS", "GitHub Pages"],
+        liveUrl: "https://pawinner.github.io/mdcu-oph26-escape-crossword/play",
+        githubUrl: "https://github.com/pawinner/mdcu-oph26-escape-crossword"
+      },
+      {
+        name: "MDCU OPH Hint Quiz",
+        tagline: "Quiz for Hint - MDCU OPH 2026: Escape Room",
+        description:
+          "Quizzes for Hints for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-hints).",
+        tech: ["HTML/CSS/JS", "GitHub Pages"],
+        liveUrl: "https://pawinner.github.io/mdcu-oph26-escape-hints/hint",
+        githubUrl: "https://github.com/pawinner/mdcu-oph26-escape-hints"
       }
     ]
   },
@@ -355,9 +357,8 @@ function buildSideNav() {
     btn.appendChild(dot);
 
     // Favicon (from siteUrl or first liveUrl)
-    const faviconSrc = ev.siteUrl
-      ? faviconUrl(ev.siteUrl)
-      : (ev.projects.find(p => p.liveUrl) ? faviconUrl(ev.projects.find(p => p.liveUrl).liveUrl) : null);
+    const faviconSource = ev.faviconSource || ev.siteUrl || ev.projects.find(p => p.liveUrl)?.liveUrl;
+    const faviconSrc = faviconSource ? faviconUrl(faviconSource) : null;
 
     if (faviconSrc) {
       const img = document.createElement("img");
@@ -788,7 +789,7 @@ function renderPortfolio() {
     h2.textContent = ev.title;
 
     // Event favicon (siteUrl)
-    const evFavSrc = ev.siteUrl ? faviconUrl(ev.siteUrl) : null;
+    const evFavSrc = ev.faviconSource || ev.siteUrl ? faviconUrl(ev.faviconSource || ev.siteUrl) : null;
     if (evFavSrc) {
       const img = document.createElement("img");
       img.src = evFavSrc;
