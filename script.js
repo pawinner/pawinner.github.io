@@ -4,30 +4,32 @@
 const PORTFOLIO_EVENTS = [
   {
     id: "ajarnyai",
-    title: "2027 MDCU Ajarnyai",
-    description: "Web platform and data tooling for MDCU Ajarnyai 2570.",
+    title: "MDCU Ajarnyai 2027",
+    description: "พิธีพระราชทานเพลิงศพอาจารย์ใหญ่ผู้ทอดร่างกายเพื่อการศึกษา (เป็นกรณีพิเศษ) ประจำปีการศึกษา 2568",
     siteUrl: "https://ajarnyai.docchula.com/",
     projects: [
       {
         name: "mdcu-ajarnyai-2570",
+        tagline: "ระบบตรวจสอบข้อมูลอาจารย์ใหญ่ ประจำปีการศึกษา 2568 | คณะแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย",
         description:
           "Next.js + Supabase web application for cadaver memorial & donor consent management, featuring CSV import with PATCH updates, special consent statuses, custom Chulalongkorn typography, mobile-first header/scroll optimizations, and maintenance mode.",
         tech: ["Next.js", "Supabase", "Vercel Analytics", "bcryptjs"],
         liveUrl: "https://ajarnyai.docchula.com/",
         githubUrl: "https://github.com/pawinner/mdcu-ajarnyai-2570",
         isPrivate: true,
-        notes: "Supporting folders in event: data/ (CSV imports) & Pics from LineOA/."
+        notes: ""
       }
     ]
   },
   {
     id: "tournament",
     title: "MDCU 4th Medical Tournament",
-    description: "Stage presentation, countdown, Jeopardy gameplay, and live leaderboard.",
+    description: "Part of MDCU Congress 2026",
     siteUrl: "https://pawinner.github.io/mdcu-tournament26/",
     projects: [
       {
         name: "mdcu-tournament26",
+        tagline: "MDCU Medical Tournament 2026",
         description:
           "Interactive futuristic web app for stage presentation, countdown management, Jeopardy-style competition, and live leaderboard displays for the 4th MDCU Medical Tournament 2026.",
         tech: ["HTML/CSS/JS", "Google Apps Script"],
@@ -45,18 +47,21 @@ const PORTFOLIO_EVENTS = [
       {
         name: "MDCU-Night-CheckIn",
         group: "Registrar & Database",
+        tagline: "ระบบเช็คชื่อน้อง MDCU Freshy Camp & Night 2026",
         description:
-          "ระบบเช็คชื่อน้อง MDCU Freshy Camp & Night 2026 — collaborative check-in system with PanuwitPuk.",
+          "check-in system in collaboration with PanuwitPuk.",
         tech: ["HTML/JS", "Google Apps Script"],
         liveUrl: "https://freshyxnight2026.vercel.app",
         githubUrl: "https://github.com/PanuwitPuk/MDCU-Night-CheckIn",
+        collaborators: ["PanuwitPuk"],
         role: "15 commits: Google Apps Script backend integration, cached search/filter speedup, dorm check-in logic, and bug fixes."
       },
       {
         name: "freshy26-knowyournong82",
         group: "Registrar & Database",
+        tagline: "จดหมายถึงพี่รหัส",
         description:
-          '"จดหมายถึงพี่รหัส" — interactive web experience for Freshy 82 students with custom Open Graph metadata and responsive typography.',
+          '"จดหมายถึงพี่รหัส" — interactive web experience for P\'81 students to check their kinship preferences.',
         tech: ["React", "TypeScript", "Vite", "Vercel"],
         liveUrl: "https://knowyournong82.vercel.app",
         githubUrl: "https://github.com/pawinner/freshy26-knowyournong82"
@@ -64,6 +69,7 @@ const PORTFOLIO_EVENTS = [
       {
         name: "freshy26-pline-checkin",
         group: "Registrar & Database",
+        tagline: "ระบบเช็คชื่อการซ้อมพี่ไลน์ MDCU Freshy Camp 2026",
         description:
           "P-Line check-in web application with location verification toggle, attendance check link, and responsive check-in flow.",
         tech: ["Next.js", "React", "Vercel"],
@@ -73,16 +79,19 @@ const PORTFOLIO_EVENTS = [
       {
         name: "MDCU-BigGame2026",
         group: "Big Game",
+        tagline: "Big Game 2026 - The Main Web",
         description:
           "Main Big Game 2026 web application built with LiterallyNotCaT (KirikaA).",
         tech: ["Next.js", "NextAuth", "Vercel KV", "Framer Motion"],
         liveUrl: "https://gamehub888.vercel.app",
         githubUrl: "https://github.com/LiterallyNotCaT/MDCU-BigGame2026",
+        collaborators: ["LiterallyNotCaT"],
         role: "23 commits: game mode settings, timer/form write error handling, favicon & layout metadata updates."
       },
       {
         name: "biggame26-staff-checkin",
         group: "Big Game",
+        tagline: "ระบบเช็คชื่อ Staff และ P'Demo Big Game 2026",
         description:
           "Staff check-in and QR attendance web app for Big Game 2026 with NextAuth and Google Apps Script OAuth integration.",
         tech: ["Next.js", "NextAuth", "Google Apps Script", "Vercel Analytics"],
@@ -93,6 +102,7 @@ const PORTFOLIO_EVENTS = [
       {
         name: "biggame26-ending",
         group: "Big Game",
+        tagline: "Lottery, Ending & Results - Big Game 2026",
         description:
           "Real-time central presentation dashboard, interactive game controllers, wood timer with particle effects, audio-analyzed lottery/slot machine, and ending results display.",
         tech: ["JavaScript", "Firebase", "Vercel Analytics", "Python"],
@@ -102,6 +112,7 @@ const PORTFOLIO_EVENTS = [
       {
         name: "biggame26-countdown",
         group: "Big Game",
+        tagline: "Big Game 2026 Countdown",
         description:
           "Countdown timer suite for Big Game MDCU Freshy Camp 2026 (Escape, Fair, and Physical game modes with skip-intro & round timing controls).",
         tech: ["HTML/CSS/JS", "GitHub Pages"],
@@ -118,6 +129,7 @@ const PORTFOLIO_EVENTS = [
     projects: [
       {
         name: "MDCU OPH Timer",
+        tagline: "Countdown Timer - MDCU OPH 2026: Escape Room",
         description:
           "Countdown Timer for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-timer).",
         tech: ["HTML/CSS/JS", "GitHub Pages"],
@@ -126,6 +138,7 @@ const PORTFOLIO_EVENTS = [
       },
       {
         name: "MDCU OPH Crossword Gemini",
+        tagline: "Crossword - MDCU OPH 2026: Escape Room",
         description:
           "Crossword Gameplay for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-crossword). Includes earlier MDCU OPH Crossword GPT prototype.",
         tech: ["HTML/CSS/JS", "GitHub Pages"],
@@ -134,6 +147,7 @@ const PORTFOLIO_EVENTS = [
       },
       {
         name: "MDCU OPH Hint Quiz",
+        tagline: "Quiz for Hint - MDCU OPH 2026: Escape Room",
         description:
           "Quizzes for Hints for Escape Room MDCU Open House 2026 (mdcu-oph26-escape-hints).",
         tech: ["HTML/CSS/JS", "GitHub Pages"],
@@ -150,36 +164,46 @@ const PORTFOLIO_EVENTS = [
     projects: [
       {
         name: "DataPrivacySMCU",
+        tagline: "Data Privacy SMCU",
         description:
-          "SMCU Data Privacy form submission and approval web application (Laravel / PHP). Also includes local working copy DataPrivacySMCU 02.",
+          "SMCU Data Privacy form submission and approval web application (Laravel / PHP).",
         tech: ["Laravel", "PHP", "Bootstrap 5", "Docker"],
         githubUrl: "https://github.com/docchula/DataPrivacySMCU",
+        organization: "Docchula",
         isPrivate: true,
-        role: "Server migration & bug fixes: fixed Barney server migration with P'Bebie (9a075a4), restored local storage root to storage/app (818bc06), redirected /login to /redirect with feature tests (f42ccfd), added Bootstrap 5 paginator support with tests (5d69671), and merged PR #10 (f0d126d)."
+        role: "Helped with the Laravel 13 and Barney migration."
       },
       {
         name: "fake-el-player",
+        tagline: "FAKE Docchula Video Player",
         description:
-          "Forked Docchula Video Player v2 for MDCU E-Learning, deployed as a backup player with status/redirect controls and an interactive autoplay prank.",
+          "Forked Docchula Video Player v2 for MDCU E-Learning, deployed as a backup player to use when the faculty server is down.",
         tech: ["Vue 3", "TypeScript", "Vite", "TailwindCSS", "Video.js"],
         liveUrl: "https://fake-docchula-player.vercel.app",
         githubUrl: "https://github.com/pawinner/fake-el-player",
-        role: "8 commits: added NoticeModal disclosing backup use (af22057, 917e11f), migrated deployment from GitHub Pages to Vercel (2e47540), enabled Vercel Analytics (7886d37), added site open/redirect status config (86bd07c), and built NextVideoModal + VITE_AUTOPLAY prank (4378525, 235a0fb)."
+        roleBeforeLink: "Forked from ",
+        roleLinkText: "docchula/el-player",
+        roleLinkUrl: "https://github.com/docchula/el-player",
+        roleAfterLink: " as a backup player to use when the faculty server is down."
       },
       {
         name: "el-player",
+        tagline: "Docchula Video Player for MDCU E-Learning v2",
         description:
           "Official Docchula Video Player v2 for MDCU E-Learning (docchula/el-player).",
         tech: ["Vue 3", "TypeScript", "Vite", "Video.js"],
         githubUrl: "https://github.com/docchula/el-player",
+        organization: "Docchula",
         role: "Upstream reference repository (0 direct commits by Pawinner; forked into fake-el-player)."
       },
       {
         name: "Providence",
+        tagline: "SMCU New Student Registration (Providence)",
         description:
           "SMCU New Student Registration & Google Workspace enrollment web application (docchula/Providence).",
         tech: ["Laravel", "Inertia.js", "Vue 3"],
         githubUrl: "https://github.com/docchula/Providence",
+        organization: "Docchula",
         isPrivate: true,
         role: "Local reference clone (0 commits by Pawinner in git history)."
       }
@@ -193,12 +217,14 @@ const PORTFOLIO_EVENTS = [
     projects: [
       {
         name: "it-issue-nextjs-supabase",
+        tagline: "IT Issue Tracker",
         description: "IT issue tracking web application built with Next.js and Supabase.",
         tech: ["Next.js", "Supabase"],
         githubUrl: "https://github.com/pawinner/it-issue-nextjs-supabase"
       },
       {
         name: "DATA-ANLYS-PYTHON",
+        tagline: "Following along with the CHULA MOOC Flexi course \"DATA-ANLYS-PYTHON.\"",
         description:
           'Jupyter notebooks following along with the CHULA MOOC Flexi course "Learn Python: Language Basics and Fundamental Data Processing."',
         tech: ["Python", "Jupyter Notebook"],
@@ -207,6 +233,7 @@ const PORTFOLIO_EVENTS = [
       },
       {
         name: "baansuan_prannok",
+        tagline: "บ้านสวนพรานนก",
         description: "Forked web project from bluenex/baansuan_prannok.",
         tech: ["Fork"],
         liveUrl: "http://bluenex.github.io/baansuan_prannok/",
@@ -270,8 +297,12 @@ function matchesQuery(project, eventTitle, query) {
   if (!query) return true;
   const q = query.toLowerCase();
   const haystack = [
-    eventTitle, project.name, project.description,
-    project.role || "", project.notes || "",
+    eventTitle, project.name,
+    project.tagline || "", project.shortDesc || "", project.shortDescription || "", project.leadDesc || "",
+    project.description || "",
+    project.role || "", project.roleBeforeLink || "", project.roleLinkText || "",
+    project.roleAfterLink || "", project.notes || "", project.organization || "",
+    ...(project.collaborators || []),
     project.group || "",
     ...(project.tech || [])
   ].join(" ").toLowerCase();
@@ -498,7 +529,9 @@ function createProjectCard(project, colorGrad, isItSmcu = false) {
   top.appendChild(actionsWrap);
   card.appendChild(top);
 
-  /* — collapsible details wrapper (hidden by default) — */
+  /* — description & collapsible details wrapper — */
+  const leadText = project.tagline || project.shortDesc || project.shortDescription || project.leadDesc;
+
   const detailsWrap = document.createElement("div");
   detailsWrap.className = "card-details";
 
@@ -516,22 +549,86 @@ function createProjectCard(project, colorGrad, isItSmcu = false) {
     detailsWrap.appendChild(note);
   }
 
-  // Role for non-IT_SMCU projects is inside collapsible details
-  if (!isItSmcu && project.role) {
+  function createRoleBox() {
     const roleBox = document.createElement("div");
     roleBox.className = "role-box";
-    roleBox.innerHTML = `<strong>My Role / Commits</strong>${escapeHtml(project.role)}`;
-    detailsWrap.appendChild(roleBox);
+
+    const heading = document.createElement("strong");
+    heading.textContent = "My Role / Commits";
+    roleBox.appendChild(heading);
+
+    if (project.roleLinkUrl) {
+      roleBox.appendChild(document.createTextNode(project.roleBeforeLink || ""));
+
+      const link = document.createElement("a");
+      link.href = project.roleLinkUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = project.roleLinkText || project.roleLinkUrl;
+      roleBox.appendChild(link);
+
+      roleBox.appendChild(document.createTextNode(project.roleAfterLink || ""));
+    } else {
+      roleBox.appendChild(document.createTextNode(project.role || ""));
+    }
+
+    return roleBox;
   }
 
-  card.appendChild(detailsWrap);
+  // Role for non-IT_SMCU projects is inside collapsible details
+  if (!isItSmcu && (project.role || project.roleLinkUrl)) {
+    detailsWrap.appendChild(createRoleBox());
+  }
+
+  if (leadText) {
+    const descWrap = document.createElement("div");
+    descWrap.className = "card-desc-wrap";
+
+    const leadDesc = document.createElement("p");
+    leadDesc.className = "card-desc card-desc-lead";
+    leadDesc.textContent = leadText;
+    descWrap.appendChild(leadDesc);
+
+    descWrap.appendChild(detailsWrap);
+    card.appendChild(descWrap);
+  } else {
+    card.appendChild(detailsWrap);
+  }
 
   /* — IT_SMCU projects: show my role / commits even when collapsed — */
-  if (isItSmcu && project.role) {
-    const roleBox = document.createElement("div");
-    roleBox.className = "role-box";
-    roleBox.innerHTML = `<strong>My Role / Commits</strong>${escapeHtml(project.role)}`;
-    card.appendChild(roleBox);
+  if (isItSmcu && (project.role || project.roleLinkUrl)) {
+    card.appendChild(createRoleBox());
+  }
+
+  /* — collaborators and tags — */
+  const cardMeta = document.createElement("div");
+  cardMeta.className = "card-meta";
+
+  if (project.collaborators?.length || project.organization) {
+    const collaboratorBadges = document.createElement("div");
+    collaboratorBadges.className = "collaborator-badges";
+
+    const addBadge = (label, kind) => {
+      const badge = document.createElement("span");
+      badge.className = `collaborator-badge collaborator-badge-${kind}`;
+
+      const icon = document.createElement("span");
+      icon.className = "collaborator-badge-icon";
+      icon.setAttribute("aria-hidden", "true");
+      icon.innerHTML = kind === "organization"
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 20V8h6v12M7 8h.01M7 12h.01M7 16h.01M17 8h.01M17 12h.01M17 16h.01"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+      badge.appendChild(icon);
+
+      const text = document.createElement("span");
+      text.textContent = label;
+      badge.appendChild(text);
+      collaboratorBadges.appendChild(badge);
+    };
+
+    if (project.organization) addBadge(project.organization, "organization");
+    (project.collaborators || []).forEach(name => addBadge(name, "person"));
+    cardMeta.appendChild(collaboratorBadges);
   }
 
   /* — tags — */
@@ -544,8 +641,10 @@ function createProjectCard(project, colorGrad, isItSmcu = false) {
       span.textContent = t;
       tags.appendChild(span);
     });
-    card.appendChild(tags);
+    cardMeta.appendChild(tags);
   }
+
+  if (cardMeta.hasChildNodes()) card.appendChild(cardMeta);
 
   /* — links — */
   if (project.liveUrl || project.githubUrl) {
@@ -634,9 +733,9 @@ function renderPortfolio() {
   statsEl.innerHTML = `
     <div class="stats-bar-info">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.6;flex-shrink:0"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-      <span>Showing <strong style="color:var(--text)">${totalProjects}</strong> project${totalProjects === 1 ? "" : "s"}
+      <span><strong style="color:var(--text)">${totalProjects}</strong> project${totalProjects === 1 ? "" : "s"}
       across <strong style="color:var(--text)">${filteredEvents.length}</strong> event${filteredEvents.length === 1 ? "" : "s"}
-      &mdash; <strong style="color:var(--green)">${liveCount}</strong> with live sites</span>
+      &mdash; <strong style="color:var(--green)">${liveCount}</strong> live sites</span>
     </div>
     <button id="toggleAllBtn" class="stats-toggle-all" type="button" data-state="some-collapsed">Expand All</button>
   `;
