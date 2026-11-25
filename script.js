@@ -882,6 +882,14 @@ searchEl.addEventListener("input", e => {
 /* ═══════════════════════════════════════════════════════
    BOOT
 ═══════════════════════════════════════════════════════ */
+document.fonts.load('16px "helvetica-neue-world"').then(fontFaces => {
+  if (!fontFaces.some(fontFace => fontFace.status === "loaded")) {
+    document.documentElement.classList.add("adobe-font-unavailable");
+  }
+}).catch(() => {
+  document.documentElement.classList.add("adobe-font-unavailable");
+});
+
 initTheme();
 buildSideNav();
 renderPortfolio();
