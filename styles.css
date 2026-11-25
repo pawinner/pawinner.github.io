@@ -299,11 +299,19 @@ a:hover { text-decoration: underline; }
 ═══════════════════════════════════════════════ */
 .layout {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;  /* sidebar stretches full height of this container */
   min-height: 100vh;
 }
 
-/* Sidebar */
+/* Right column wraps both main content and footer */
+.main-wrapper {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar — sticky inside flex; containing block now extends through footer */
 .sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
@@ -315,6 +323,7 @@ a:hover { text-decoration: underline; }
   border-right: 1px solid var(--border-soft);
   background: var(--surface);
   scrollbar-width: none;
+  z-index: 20;
 }
 .sidebar::-webkit-scrollbar { display: none; }
 
@@ -589,6 +598,33 @@ a:hover { text-decoration: underline; }
   line-height: 1.55;
 }
 
+/* Expandable description wrapper */
+.card-desc-wrap { position: relative; }
+
+.card-desc-wrap:not(.expanded) .card-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.desc-toggle {
+  display: inline-block;
+  margin-top: 4px;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+.desc-toggle:hover { opacity: 1; text-decoration: underline; }
+
 /* Role box */
 .role-box {
   background: var(--accent-soft);
@@ -728,7 +764,12 @@ a:hover { text-decoration: underline; }
 
   .layout { display: block; }
 
-  .main-content { padding: 16px 16px 48px; }
+  .main-content {
+    padding: 16px 16px 48px;
+    margin-left: 0;
+  }
+
+  .site-footer { margin-left: 0; }
 
   .site-header { padding: 36px 20px 32px; }
 
@@ -736,7 +777,6 @@ a:hover { text-decoration: underline; }
 
   .projects-grid { grid-template-columns: 1fr; }
 }
-
 @media (max-width: 480px) {
   .hero-name { font-size: 1.6rem; }
   .avatar { width: 72px; height: 72px; }

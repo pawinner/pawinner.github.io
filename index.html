@@ -59,7 +59,7 @@
     </div>
   </header>
 
-  <!-- ═══ LAYOUT: sidebar + content ═══ -->
+  <!-- ═══ LAYOUT: sidebar + (main + footer) ═══ -->
   <div class="layout">
 
     <!-- Left sidebar nav -->
@@ -70,20 +70,22 @@
       </nav>
     </aside>
 
-    <!-- Main content -->
-    <main class="main-content">
-      <div class="stats-bar" id="statsBar"></div>
-      <div id="portfolioRoot" class="events-list"></div>
-    </main>
+    <!-- Right column: content + footer together so sidebar sticky spans both -->
+    <div class="main-wrapper">
+      <main class="main-content">
+        <div class="stats-bar" id="statsBar"></div>
+        <div id="portfolioRoot" class="events-list"></div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <span>Built for <a href="https://github.com/pawinner/pawinner.github.io" target="_blank" rel="noopener noreferrer">pawinner.github.io</a></span>
+          <span>Organized by event folders &amp; GitHub repositories</span>
+        </div>
+      </footer>
+    </div>
 
   </div>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span>Built for <a href="https://github.com/pawinner/pawinner.github.io" target="_blank" rel="noopener noreferrer">pawinner.github.io</a></span>
-      <span>Organized by event folders &amp; GitHub repositories</span>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>

@@ -256,11 +256,11 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
-/** Returns the Google S2 favicon URL for a given href */
+/** Returns the DuckDuckGo favicon URL — returns 404 on failure (onerror fires), no blank globe */
 function faviconUrl(href) {
   try {
     const url = new URL(href);
-    return `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=32`;
+    return `https://icons.duckduckgo.com/ip3/${url.hostname}.ico`;
   } catch {
     return null;
   }
@@ -354,32 +354,49 @@ function buildSideNav() {
 }
 
 /* ═══════════════════════════════════════════════════════
-   SCROLL SPY
+   SCROLL SPY — scroll event + manual position check
+   Fixes the "last section never activates" problem.
 ═══════════════════════════════════════════════════════ */
+let _scrollSpyRaf = null;
+
 function setupScrollSpy() {
-  const sections = PORTFOLIO_EVENTS.map(ev => document.getElementById("event-" + ev.id)).filter(Boolean);
-  if (!sections.length) return;
+  // Remove any previous listener
+  window.removeEventListener("scroll", _scrollSpyHandler);
+  window.addEventListener("scroll", _scrollSpyHandler, { passive: true });
+  _scrollSpyHandler(); // run once immediately
+}
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.dataset.eventId;
-          sideNavEl.querySelectorAll(".side-nav-item").forEach(btn => {
-            btn.classList.toggle("active", btn.dataset.eventId === id);
-          });
+function _scrollSpyHandler() {
+  if (_scrollSpyRaf) return;
+  _scrollSpyRaf = requestAnimationFrame(() => {
+    _scrollSpyRaf = null;
+
+    const sections = [...document.querySelectorAll(".event-section")];
+    if (!sections.length) return;
+
+    const winH       = window.innerHeight;
+    const docH       = document.documentElement.scrollHeight;
+    const nearBottom = window.scrollY + winH >= docH - 40;
+
+    // Derive id from the element's own id attr (data-event-id is never set by renderPortfolio)
+    const idOf = el => el.id.replace("event-", "");
+
+    let activeId = idOf(sections[0]); // default: first section
+
+    if (nearBottom) {
+      activeId = idOf(sections[sections.length - 1]);
+    } else {
+      const threshold = winH * 0.35;
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= threshold) {
+          activeId = idOf(s);
         }
-      });
-    },
-    {
-      rootMargin: "-20% 0px -65% 0px",
-      threshold: 0
+      }
     }
-  );
 
-  sections.forEach(s => {
-    s.dataset.eventId = s.id.replace("event-", "");
-    observer.observe(s);
+    sideNavEl.querySelectorAll(".side-nav-item").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.eventId === activeId);
+    });
   });
 }
 
@@ -430,11 +447,25 @@ function createProjectCard(project, colorGrad) {
 
   card.appendChild(top);
 
-  /* — description — */
+  /* — description (expandable) — */
+  const descWrap = document.createElement("div");
+  descWrap.className = "card-desc-wrap";
+
   const desc = document.createElement("p");
   desc.className = "card-desc";
   desc.textContent = project.description;
-  card.appendChild(desc);
+  descWrap.appendChild(desc);
+
+  // "Show more / Show less" toggle
+  const toggleBtn = document.createElement("button");
+  toggleBtn.className = "desc-toggle";
+  toggleBtn.textContent = "Show more ↓";
+  toggleBtn.addEventListener("click", () => {
+    const expanded = descWrap.classList.toggle("expanded");
+    toggleBtn.textContent = expanded ? "Show less ↑" : "Show more ↓";
+  });
+  descWrap.appendChild(toggleBtn);
+  card.appendChild(descWrap);
 
   /* — role — */
   if (project.role) {
