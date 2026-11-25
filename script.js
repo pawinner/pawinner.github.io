@@ -234,8 +234,20 @@ const EVENT_COLORS = [
 const state = { query: "" };
 
 /* ═══════════════════════════════════════════════════════
-   HELPERS
+   HELPERS & CONSTANTS
 ═══════════════════════════════════════════════════════ */
+const LIVE_PROJECT_NAMES = new Set([
+  "mdcu-ajarnyai-2570",
+  "DataPrivacySMCU",
+  "el-player",
+  "freshy26-knowyournong82"
+]);
+const HIDDEN_PROJECT_NAMES = new Set([
+  "it-issue-nextjs-supabase",
+  "baansuan_prannok",
+  "el-player",
+  "Providence"
+]);
 function escapeHtml(str) {
   return str
     .replace(/&/g, "&amp;")
@@ -392,7 +404,26 @@ function _scrollSpyHandler() {
 /* ═══════════════════════════════════════════════════════
    PROJECT CARD
 ═══════════════════════════════════════════════════════ */
-function createProjectCard(project, colorGrad) {
+function updateToggleAllState() {
+  const toggleAllBtn = document.getElementById("toggleAllBtn");
+  if (!toggleAllBtn) return;
+  const cards = document.querySelectorAll(".card");
+  if (!cards.length) {
+    toggleAllBtn.style.display = "none";
+    return;
+  }
+  toggleAllBtn.style.display = "inline-flex";
+  const expandedCount = document.querySelectorAll(".card.is-expanded").length;
+  if (expandedCount === cards.length) {
+    toggleAllBtn.textContent = "Collapse All";
+    toggleAllBtn.dataset.state = "all-expanded";
+  } else {
+    toggleAllBtn.textContent = "Expand All";
+    toggleAllBtn.dataset.state = "some-collapsed";
+  }
+}
+
+function createProjectCard(project, colorGrad, isItSmcu = false) {
   const card = document.createElement("article");
   card.className = "card";
   card.style.setProperty("--card-gradient", colorGrad);
@@ -422,55 +453,85 @@ function createProjectCard(project, colorGrad) {
   titleWrap.appendChild(titleEl);
   top.appendChild(titleWrap);
 
-  if (project.liveUrl) {
+  // Actions on top-right: Live pill (only designated projects) + expand/collapse button
+  const actionsWrap = document.createElement("div");
+  actionsWrap.className = "card-actions-wrap";
+
+  if (LIVE_PROJECT_NAMES.has(project.name)) {
     const badge = document.createElement("span");
     badge.className = "badge badge-live";
     badge.textContent = "Live";
-    top.appendChild(badge);
-  } else if (project.isPrivate) {
-    const badge = document.createElement("span");
-    badge.className = "badge badge-private";
-    badge.textContent = "Private";
-    top.appendChild(badge);
+    actionsWrap.appendChild(badge);
   }
 
+  // Expand / collapse button placed right to the live pill
+  const expandBtn = document.createElement("button");
+  expandBtn.type = "button";
+  expandBtn.className = "card-expand-btn";
+  expandBtn.setAttribute("aria-expanded", "false");
+  expandBtn.setAttribute("aria-label", `Toggle details for ${project.name}`);
+  expandBtn.title = "Show details";
+  expandBtn.innerHTML = `
+    <svg class="expand-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  `;
+
+  function toggleCard() {
+    const isExpanded = card.classList.toggle("is-expanded");
+    expandBtn.setAttribute("aria-expanded", String(isExpanded));
+    expandBtn.title = isExpanded ? "Hide details" : "Show details";
+    updateToggleAllState();
+  }
+
+  // Clicking the project header (title, icon, or surrounding area) toggles dropdown
+  top.addEventListener("click", () => {
+    toggleCard();
+  });
+
+  expandBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    toggleCard();
+  });
+
+  actionsWrap.appendChild(expandBtn);
+  top.appendChild(actionsWrap);
   card.appendChild(top);
 
-  /* — description (expandable) — */
-  const descWrap = document.createElement("div");
-  descWrap.className = "card-desc-wrap";
+  /* — collapsible details wrapper (hidden by default) — */
+  const detailsWrap = document.createElement("div");
+  detailsWrap.className = "card-details";
 
-  const desc = document.createElement("p");
-  desc.className = "card-desc";
-  desc.textContent = project.description;
-  descWrap.appendChild(desc);
+  if (project.description) {
+    const desc = document.createElement("p");
+    desc.className = "card-desc";
+    desc.textContent = project.description;
+    detailsWrap.appendChild(desc);
+  }
 
-  // "Show more / Show less" toggle
-  const toggleBtn = document.createElement("button");
-  toggleBtn.className = "desc-toggle";
-  toggleBtn.textContent = "Show more ↓";
-  toggleBtn.addEventListener("click", () => {
-    const expanded = descWrap.classList.toggle("expanded");
-    toggleBtn.textContent = expanded ? "Show less ↑" : "Show more ↓";
-  });
-  descWrap.appendChild(toggleBtn);
-  card.appendChild(descWrap);
+  if (project.notes) {
+    const note = document.createElement("p");
+    note.className = "card-desc card-notes";
+    note.textContent = project.notes;
+    detailsWrap.appendChild(note);
+  }
 
-  /* — role — */
-  if (project.role) {
+  // Role for non-IT_SMCU projects is inside collapsible details
+  if (!isItSmcu && project.role) {
+    const roleBox = document.createElement("div");
+    roleBox.className = "role-box";
+    roleBox.innerHTML = `<strong>My Role / Commits</strong>${escapeHtml(project.role)}`;
+    detailsWrap.appendChild(roleBox);
+  }
+
+  card.appendChild(detailsWrap);
+
+  /* — IT_SMCU projects: show my role / commits even when collapsed — */
+  if (isItSmcu && project.role) {
     const roleBox = document.createElement("div");
     roleBox.className = "role-box";
     roleBox.innerHTML = `<strong>My Role / Commits</strong>${escapeHtml(project.role)}`;
     card.appendChild(roleBox);
-  }
-
-  /* — notes — */
-  if (project.notes) {
-    const note = document.createElement("p");
-    note.className = "card-desc";
-    note.style.fontStyle = "italic";
-    note.textContent = project.notes;
-    card.appendChild(note);
   }
 
   /* — tags — */
@@ -561,19 +622,41 @@ function renderPortfolio() {
       ...ev,
       _color: EVENT_COLORS[i % EVENT_COLORS.length],
       _idx: i,
-      projects: ev.projects.filter(p => matchesQuery(p, ev.title, q))
+      projects: ev.projects.filter(p =>
+        !HIDDEN_PROJECT_NAMES.has(p.name) && matchesQuery(p, ev.title, q)
+      )
     }))
     .filter(ev => ev.projects.length > 0);
 
   const totalProjects = filteredEvents.reduce((acc, ev) => acc + ev.projects.length, 0);
-  const liveCount     = filteredEvents.reduce((acc, ev) => acc + ev.projects.filter(p => p.liveUrl).length, 0);
+  const liveCount     = filteredEvents.reduce((acc, ev) => acc + ev.projects.filter(p => LIVE_PROJECT_NAMES.has(p.name)).length, 0);
 
   statsEl.innerHTML = `
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.6;flex-shrink:0"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-    Showing <strong style="color:var(--text)">${totalProjects}</strong> project${totalProjects === 1 ? "" : "s"}
-    across <strong style="color:var(--text)">${filteredEvents.length}</strong> event${filteredEvents.length === 1 ? "" : "s"}
-    &mdash; <strong style="color:var(--green)">${liveCount}</strong> with live sites
+    <div class="stats-bar-info">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.6;flex-shrink:0"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Showing <strong style="color:var(--text)">${totalProjects}</strong> project${totalProjects === 1 ? "" : "s"}
+      across <strong style="color:var(--text)">${filteredEvents.length}</strong> event${filteredEvents.length === 1 ? "" : "s"}
+      &mdash; <strong style="color:var(--green)">${liveCount}</strong> with live sites</span>
+    </div>
+    <button id="toggleAllBtn" class="stats-toggle-all" type="button" data-state="some-collapsed">Expand All</button>
   `;
+
+  const toggleAllBtn = document.getElementById("toggleAllBtn");
+  if (toggleAllBtn) {
+    toggleAllBtn.addEventListener("click", () => {
+      const cards = document.querySelectorAll(".card");
+      const shouldExpand = toggleAllBtn.dataset.state !== "all-expanded";
+      cards.forEach(card => {
+        card.classList.toggle("is-expanded", shouldExpand);
+        const btn = card.querySelector(".card-expand-btn");
+        if (btn) {
+          btn.setAttribute("aria-expanded", String(shouldExpand));
+          btn.title = shouldExpand ? "Hide details" : "Show details";
+        }
+      });
+      updateToggleAllState();
+    });
+  }
 
   if (!filteredEvents.length) {
     const empty = document.createElement("div");
@@ -585,6 +668,7 @@ function renderPortfolio() {
 
   filteredEvents.forEach(ev => {
     const color = ev._color;
+    const isItSmcu = ev.id === "itsmcu";
     const section = document.createElement("section");
     section.className = "event-section";
     section.id = "event-" + ev.id;
@@ -638,7 +722,7 @@ function renderPortfolio() {
     if (!hasGroups) {
       const grid = document.createElement("div");
       grid.className = "projects-grid";
-      ev.projects.forEach(p => grid.appendChild(createProjectCard(p, color.grad)));
+      ev.projects.forEach(p => grid.appendChild(createProjectCard(p, color.grad, isItSmcu)));
       section.appendChild(grid);
     } else {
       const groupMap = new Map();
@@ -669,7 +753,7 @@ function renderPortfolio() {
 
         const grid = document.createElement("div");
         grid.className = "projects-grid";
-        gProjects.forEach(p => grid.appendChild(createProjectCard(p, color.grad)));
+        gProjects.forEach(p => grid.appendChild(createProjectCard(p, color.grad, isItSmcu)));
         groupEl.appendChild(grid);
 
         section.appendChild(groupEl);
@@ -678,6 +762,9 @@ function renderPortfolio() {
 
     rootEl.appendChild(section);
   });
+
+  // Update toggle all button state
+  updateToggleAllState();
 
   // Re-setup scroll spy after rendering
   setupScrollSpy();
