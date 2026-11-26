@@ -13,6 +13,10 @@
   --muted: #8b87b8;
   --radius: 16px;
 
+  /* Active event ambient gradient stops (updated smoothly by scroll spy) */
+  --event-bg-1-rgb: 124, 58, 237;
+  --event-bg-2-rgb: 167, 139, 250;
+
   /* Gradient stops (colorful) */
   --c1: #7c3aed;   /* violet */
   --c2: #2563eb;   /* blue */
@@ -102,6 +106,7 @@ a:hover { text-decoration: underline; }
 ═══════════════════════════════════════════════ */
 .site-header {
   position: relative;
+  z-index: 20;
   overflow: hidden;
   padding: 56px 40px 48px;
   display: flex;
@@ -435,9 +440,37 @@ a:hover { text-decoration: underline; }
    MAIN CONTENT
 ═══════════════════════════════════════════════ */
 .main-content {
+  position: relative;
   flex: 1;
   min-width: 0;
   padding: 28px 32px 64px 36px;
+}
+
+.main-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(ellipse 75% 60% at 85% 15%, rgba(var(--event-bg-1-rgb), 0.48), transparent 68%),
+    radial-gradient(ellipse 70% 65% at 15% 85%, rgba(var(--event-bg-2-rgb), 0.38), transparent 70%),
+    linear-gradient(155deg, rgba(var(--event-bg-1-rgb), 0.24) 0%, rgba(var(--event-bg-1-rgb), 0.06) 48%, rgba(var(--event-bg-2-rgb), 0.20) 100%);
+}
+
+[data-theme="light"] .main-content::before {
+  background-image:
+    radial-gradient(ellipse 75% 60% at 85% 15%, rgba(var(--event-bg-2-rgb), 0.36), transparent 68%),
+    radial-gradient(ellipse 70% 65% at 15% 85%, rgba(var(--event-bg-1-rgb), 0.34), transparent 70%),
+    linear-gradient(155deg, rgba(var(--event-bg-2-rgb), 0.30) 0%, rgba(var(--event-bg-2-rgb), 0.10) 50%, rgba(var(--event-bg-1-rgb), 0.24) 100%);
+}
+
+.main-content > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Stats bar */
@@ -925,6 +958,8 @@ a:hover { text-decoration: underline; }
    FOOTER
 ═══════════════════════════════════════════════ */
 .site-footer {
+  position: relative;
+  z-index: 20;
   border-top: 1px solid var(--border-soft);
   padding: 20px 32px;
   font-size: 0.84rem;

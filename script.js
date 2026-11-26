@@ -249,12 +249,12 @@ const PORTFOLIO_EVENTS = [
    COLOR MAP (per event index)
 ═══════════════════════════════════════════════════════ */
 const EVENT_COLORS = [
-  { hex: "#a78bfa", grad: "linear-gradient(90deg,#7c3aed,#a78bfa)" },  // violet
-  { hex: "#34d399", grad: "linear-gradient(90deg,#059669,#34d399)" },  // emerald
-  { hex: "#60a5fa", grad: "linear-gradient(90deg,#2563eb,#60a5fa)" },  // blue
-  { hex: "#f472b6", grad: "linear-gradient(90deg,#db2777,#f472b6)" },  // pink
-  { hex: "#fb923c", grad: "linear-gradient(90deg,#ea580c,#fb923c)" },  // orange
-  { hex: "#38bdf8", grad: "linear-gradient(90deg,#0284c7,#38bdf8)" },  // sky
+  { hex: "#a78bfa", c1: "#7c3aed", c2: "#a78bfa", grad: "linear-gradient(90deg,#7c3aed,#a78bfa)" },  // violet
+  { hex: "#34d399", c1: "#059669", c2: "#34d399", grad: "linear-gradient(90deg,#059669,#34d399)" },  // emerald
+  { hex: "#60a5fa", c1: "#2563eb", c2: "#60a5fa", grad: "linear-gradient(90deg,#2563eb,#60a5fa)" },  // blue
+  { hex: "#f472b6", c1: "#db2777", c2: "#f472b6", grad: "linear-gradient(90deg,#db2777,#f472b6)" },  // pink
+  { hex: "#fb923c", c1: "#ea580c", c2: "#fb923c", grad: "linear-gradient(90deg,#ea580c,#fb923c)" },  // orange
+  { hex: "#38bdf8", c1: "#0284c7", c2: "#38bdf8", grad: "linear-gradient(90deg,#0284c7,#38bdf8)" },  // sky
 ];
 
 /* ═══════════════════════════════════════════════════════
@@ -391,6 +391,60 @@ function buildSideNav() {
    Fixes the "last section never activates" problem.
 ═══════════════════════════════════════════════════════ */
 let _scrollSpyRaf = null;
+let _lastActiveEventId = null;
+let _bgAnimRaf = null;
+let _bgCurrent = { c1: [124, 58, 237], c2: [167, 139, 250] };
+
+function hexToRgbTuple(hex) {
+  const clean = hex.replace("#", "");
+  const num = parseInt(clean, 16);
+  return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
+}
+
+function setBgRgbVars(c1, c2) {
+  const rootStyle = document.documentElement.style;
+  rootStyle.setProperty("--event-bg-1-rgb", `${Math.round(c1[0])}, ${Math.round(c1[1])}, ${Math.round(c1[2])}`);
+  rootStyle.setProperty("--event-bg-2-rgb", `${Math.round(c2[0])}, ${Math.round(c2[1])}, ${Math.round(c2[2])}`);
+}
+
+function applyActiveEventTheme(eventId) {
+  if (!eventId || eventId === _lastActiveEventId) return;
+  const isFirst = _lastActiveEventId === null;
+  _lastActiveEventId = eventId;
+
+  const idx = PORTFOLIO_EVENTS.findIndex(ev => ev.id === eventId);
+  const color = EVENT_COLORS[(idx >= 0 ? idx : 0) % EVENT_COLORS.length];
+  const target1 = hexToRgbTuple(color.c1);
+  const target2 = hexToRgbTuple(color.c2);
+
+  if (isFirst) {
+    _bgCurrent = { c1: target1, c2: target2 };
+    setBgRgbVars(target1, target2);
+    return;
+  }
+
+  if (_bgAnimRaf) cancelAnimationFrame(_bgAnimRaf);
+  const start1 = [..._bgCurrent.c1];
+  const start2 = [..._bgCurrent.c2];
+  const startTime = performance.now();
+  const duration = 650;
+
+  function step(now) {
+    const t = Math.min(1, (now - startTime) / duration);
+    const ease = 1 - Math.pow(1 - t, 3); // cubic ease-out
+    const cur1 = start1.map((v, i) => v + (target1[i] - v) * ease);
+    const cur2 = start2.map((v, i) => v + (target2[i] - v) * ease);
+    _bgCurrent = { c1: cur1, c2: cur2 };
+    setBgRgbVars(cur1, cur2);
+    if (t < 1) {
+      _bgAnimRaf = requestAnimationFrame(step);
+    } else {
+      _bgAnimRaf = null;
+    }
+  }
+
+  _bgAnimRaf = requestAnimationFrame(step);
+}
 
 function setupScrollSpy() {
   // Remove any previous listener
@@ -430,6 +484,8 @@ function _scrollSpyHandler() {
     sideNavEl.querySelectorAll(".side-nav-item").forEach(btn => {
       btn.classList.toggle("active", btn.dataset.eventId === activeId);
     });
+
+    applyActiveEventTheme(activeId);
   });
 }
 
