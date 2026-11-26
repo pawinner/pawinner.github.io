@@ -250,8 +250,8 @@ const PORTFOLIO_EVENTS = [
 ═══════════════════════════════════════════════════════ */
 const EVENT_COLORS = [
   { hex: "#a78bfa", c1: "#7c3aed", c2: "#a78bfa", grad: "linear-gradient(90deg,#7c3aed,#a78bfa)" },  // violet
-  { hex: "#34d399", c1: "#059669", c2: "#34d399", grad: "linear-gradient(90deg,#059669,#34d399)" },  // emerald
   { hex: "#60a5fa", c1: "#2563eb", c2: "#60a5fa", grad: "linear-gradient(90deg,#2563eb,#60a5fa)" },  // blue
+  { hex: "#34d399", c1: "#059669", c2: "#34d399", grad: "linear-gradient(90deg,#059669,#34d399)" },  // emerald
   { hex: "#f472b6", c1: "#db2777", c2: "#f472b6", grad: "linear-gradient(90deg,#db2777,#f472b6)" },  // pink
   { hex: "#fb923c", c1: "#ea580c", c2: "#fb923c", grad: "linear-gradient(90deg,#ea580c,#fb923c)" },  // orange
   { hex: "#38bdf8", c1: "#0284c7", c2: "#38bdf8", grad: "linear-gradient(90deg,#0284c7,#38bdf8)" },  // sky
@@ -427,7 +427,7 @@ function applyActiveEventTheme(eventId) {
   const start1 = [..._bgCurrent.c1];
   const start2 = [..._bgCurrent.c2];
   const startTime = performance.now();
-  const duration = 650;
+  const duration = 1000;
 
   function step(now) {
     const t = Math.min(1, (now - startTime) / duration);

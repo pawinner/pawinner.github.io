@@ -36,8 +36,8 @@
 
   /* Event accent map (index-based, applied by JS) */
   --event-0: #818cf8;
-  --event-1: #34d399;
-  --event-2: #60a5fa;
+  --event-1: #60a5fa;
+  --event-2: #34d399;
   --event-3: #f472b6;
   --event-4: #fb923c;
 
@@ -270,8 +270,13 @@ a:hover { text-decoration: underline; }
 .btn-gh svg { flex-shrink: 0; }
 
 .btn-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 100;
   padding: 9px 12px;
   border-radius: 999px;
+  backdrop-filter: blur(12px);
 }
 
 /* Header search */
